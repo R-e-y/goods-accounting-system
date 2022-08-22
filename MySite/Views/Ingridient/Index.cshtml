@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Ingridient>
+@{
+    Layout = "_Landing";
+    string strTitle = "Состав продукции";
+    ViewBag.Title = strTitle;
+}
+
+<div class="inner">
+    @{
+        if (TempData["Message"] != null)
+        {
+            <span style="color:red">@TempData["Message"] </span>
+        }
+        // TempData.Keep("Message");
+    }
+    <br />
+
+    <h3>@strTitle</h3>
+
+    <div class="table-wrapper">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Продукция</th>
+                    <th>Ингридиент</th>
+                    <th>Количество</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.ProductNavigation.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.RawNavigation.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+
+                        <td><a asp-controller="Ingridient" asp-action="Edit" asp-route-id="@item.IdIngr" class="button primary small">Изменить</a></td>
+                        <td>
+                            <form asp-controller="Ingridient" asp-action="Delete" method="post" asp-route-id="@item.IdIngr">
+                                <input type="hidden" asp-for="@item.IdIngr" />
+                                <input type="submit" value="Удалить" class="button  small" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+
+    <a asp-controller="Ingridient" asp-action="Edit" asp-route-id="" class="button next scrolly">Добавить состав</a>
+    <br />
+
+</div>

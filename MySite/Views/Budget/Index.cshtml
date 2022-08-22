@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Budget>
+@{
+    Layout = "_Landing";
+    string strTitle = "Бюджет";
+    ViewBag.Title = strTitle;
+}
+
+
+
+<div class="inner">
+    @{
+        if (TempData["Message"] != null)
+        {
+            <span style="color:red">@TempData["Message"] </span>
+        }
+        // TempData.Keep("Message");
+    }
+    <h3>@strTitle</h3>
+
+    <div class="table-wrapper">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+
+                    <th>Сумма</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@Html.DisplayFor(modelItem => item.Sum)</td>
+                        <td><a asp-controller="Budget" asp-action="Edit" asp-route-id="@item.IdBudget" class="button primary small">Изменить</a></td>
+                        <td>
+                            <form asp-controller="Budget" asp-action="Delete" method="post" asp-route-id="@item.IdBudget">
+                                <input type="hidden" asp-for="@item.IdBudget">
+                                <input type="submit" value="Удалить" class="button  small" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+        
+
+    </div>
+
+</div>

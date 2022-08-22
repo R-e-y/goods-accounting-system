@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ProdSale>
+@{
+    Layout = "_Landing";
+    string strTitle = "Продажи";
+    ViewBag.Title = strTitle;
+}
+
+<div class="inner">
+    <br />
+
+    @{
+        if (TempData["Message"] != null)
+        {
+            <span style="color:red">@TempData["Message"] </span>
+        }
+        //TempData.Keep("Message");
+    }
+    <br />
+
+    <h3>@strTitle</h3>
+
+    <div class="table-wrapper">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Продукция</th>
+                    <th>Количество</th>
+                    <th>Стоимость</th>
+                    <th>Дата</th>
+                    <th>Сотрудник</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.ProductNavigation.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Sum)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EmployeeNavigation.Name)</td>
+
+                        <td><a asp-controller="ProdSale" asp-action="Edit" asp-route-id="@item.IdSale" class="button primary small">Изменить</a></td>
+                        <td>
+                            <form asp-controller="ProdSale" asp-action="Delete" method="post" asp-route-id="@item.IdSale">
+                                <input type="hidden" asp-for="@item.IdSale">
+                                <input type="submit" value="Удалить" class="button  small" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+
+    <a asp-controller="ProdSale" asp-action="Edit" asp-route-id="" class="button next scrolly">Добавить продажу</a>
+    <br />
+
+</div>

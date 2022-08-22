@@ -1,0 +1,74 @@
+﻿@model RawPurchase
+@{
+    Layout = "_Landing";
+    string strTitle = "Закупка сырья";
+    ViewBag.Title = strTitle;
+}
+
+
+<div class="inner">
+
+    @{
+        if (TempData["Message"] != null)
+        {
+            <span style="color:red">@TempData["Message"] </span>
+        }
+        // TempData.Keep("Message");
+    }
+    <br />
+
+    <div>
+        <h2>@strTitle</h2>
+        <div>
+            <form asp-controller="RawPurchase" asp-action="Edit" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="IdPur" />
+
+                <div asp-validation-summary="All"></div>
+                <div class="div-box">
+                    <label asp-for="Raw"></label>
+                    <select asp-for="Raw" class="form-control" asp-items="ViewBag.Raw">Raw</select>
+                    <span asp-validation-for="Raw"></span>
+                </div>
+
+
+                <!-- ViewBag -->
+                <div class="div-box">
+                    <label asp-for="Amount"></label>
+                    <textarea asp-for="Amount"></textarea>
+                    <span asp-validation-for="Amount"></span>
+                </div>
+                <div class="div-box">
+                    <label asp-for="Sum"></label>
+                    <textarea asp-for="Sum"></textarea>
+                    <span asp-validation-for="Sum"></span>
+                </div>
+                <div class="div-box">
+                    <label asp-for="Unit"></label>
+                    <select asp-for="Unit" class="form-control" asp-items="ViewBag.Unit">Unit</select>
+                    <span asp-validation-for="Unit"></span>
+                </div>
+                <div class="div-box">
+                    <label asp-for="Date"></label>
+                    <input asp-for="Date" style="color:black" />
+                    <span asp-validation-for="Date"></span>
+                </div>
+                <div class="div-box">
+                    <label asp-for="Employee"></label>
+                    <select asp-for="Employee" class="form-control" asp-items="ViewBag.Employee">Employee</select>
+                    <span asp-validation-for="Employee"></span>
+                </div>
+                <br />
+
+                <input type="submit" value="Сохранить" />
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+

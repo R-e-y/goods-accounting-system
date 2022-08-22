@@ -1,0 +1,67 @@
+﻿@model IEnumerable<FinishedProd>
+@{
+    Layout = "_Landing";
+    string strTitle = "Продукция";
+    ViewBag.Title = strTitle;
+}
+
+
+<div class="inner">
+    @{
+        if (TempData["Message"] != null)
+        {
+            <span style="color:red">@TempData["Message"] </span>
+        }
+        // TempData.Keep("Message");
+    }
+    <br />
+
+    <h3>@strTitle</h3>
+
+    <div class="table-wrapper">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Единица измерения</th>
+                    <th>Стоимость</th>
+                    <th>Количество</th>
+                    <th>Наценка %</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.UnitNavigation.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Markup)</td>
+
+                        <td><a asp-controller="FinishedProd" asp-action="Edit" asp-route-id="@item.IdProd" class="button primary small">Изменить</a></td>
+                        <td>
+                            <form asp-controller="FinishedProd" asp-action="Delete" method="post" asp-route-id="@item.IdProd">
+                                <input type="hidden" asp-for="@item.IdProd">
+                                <input type="submit" value="Удалить" class="button  small" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            @*<tfoot>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td>100.00</td>
+                    </tr>
+                </tfoot>*@
+        </table>
+        <br />
+
+        <a asp-controller="FinishedProd" asp-action="Edit" asp-route-id="" class="button next scrolly">Добавить продукцию</a>
+        <br />
+
+    </div>
+</div>

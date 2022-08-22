@@ -1,0 +1,60 @@
+﻿@model Ingridient
+@{
+    Layout = "_Landing";
+    string strTitle = "Состав продукции";
+    ViewBag.Title = strTitle;
+}
+
+
+<div class="inner">
+
+    @{
+        if (TempData["Message"] != null)
+        {
+            <span style="color:red">@TempData["Message"] </span>
+        }
+        // TempData.Keep("Message");
+    }
+    <br />
+
+    <div>
+        <h2>@strTitle</h2>
+        <div>
+            <form asp-controller="Ingridient" asp-action="Edit" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="IdIngr" />
+
+                <div asp-validation-summary="All"></div>
+                <div class="div-box">
+                    <label asp-for="Product"></label>
+                    <select asp-for="Product" class="form-control" asp-items="ViewBag.Product">Name</select>
+                    <span asp-validation-for="Product"></span>
+                </div>
+
+                <div class="div-box">
+                    <label asp-for="Raw"></label>
+                    <select asp-for="Raw" class="form-control" asp-items="ViewBag.Raw">Name</select>
+                    <span asp-validation-for="Raw"></span>
+                </div>
+                <div class="div-box">
+                    <label asp-for="Amount"></label>
+                    <textarea asp-for="Amount"></textarea>
+                    <span asp-validation-for="Amount"></span>
+                </div>
+
+                <br />
+
+                <input type="submit" value="Сохранить" />
+                <br />
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+

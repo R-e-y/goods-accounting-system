@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Raw>
+@{
+    Layout = "_Landing";
+    string strTitle = "Сырье";
+    ViewBag.Title = strTitle;
+}
+
+<div class="inner">
+    @{
+        if (TempData["Message"] != null)
+        {
+            <span style="color:red">@TempData["Message"] </span>
+        }
+        // TempData.Keep("Message");
+    }
+    <br />
+
+    <h3>@strTitle</h3>
+
+    <div class="table-wrapper">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Единица измерения</th>
+                    <th>Стоимость</th>
+                    <th>Количество</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.UnitNavigation.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Sum)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+
+                        <td><a asp-controller="Raw" asp-action="Edit" asp-route-id="@item.IdRaw" class="button primary small">Изменить</a></td>
+                        <td>
+                            <form asp-controller="Raw" asp-action="Delete" method="post" asp-route-id="@item.IdRaw">
+                                <input type="hidden" asp-for="@item.IdRaw" />
+                                <input type="submit" value="Удалить" class="button  small" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+
+    <a asp-controller="Raw" asp-action="Edit" asp-route-id="" class="button next scrolly">Добавить сырье</a>
+    <br />
+
+</div>

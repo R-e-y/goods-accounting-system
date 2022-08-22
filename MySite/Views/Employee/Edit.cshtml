@@ -1,0 +1,73 @@
+﻿@model Employee
+@{
+    Layout = "_Landing";
+    string strTitle = "Cотрудник";
+    ViewBag.Title = strTitle;
+}
+
+
+<div class="inner">
+
+    @{
+        if (TempData["Message"] != null)
+        {
+            <span style="color:red">@TempData["Message"] </span>
+        }
+        // TempData.Keep("Message");
+    }
+    <br />
+    <div>
+        <h2>@strTitle</h2>
+        <div>
+            <form asp-controller="Employee" asp-action="Edit" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="IdEmpl" />
+
+                <div asp-validation-summary="All"></div>
+                <div class="div-box">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" />
+                    <span asp-validation-for="Name"></span>
+                </div>
+
+                <div class="div-box">
+                    <label asp-for="Post"></label>
+                    <select asp-for="Post" class="form-control" asp-items="ViewBag.Post">Name</select>
+                    <span asp-validation-for="Post"></span>
+                </div>
+                <div class="div-box">
+                    <label asp-for="Salary"></label>
+                    <textarea asp-for="Salary"></textarea>
+                    <span asp-validation-for="Salary"></span>
+                </div>
+                <div class="div-box">
+                    <label asp-for="Address"></label>
+                    <input asp-for="Address" />
+                    <span asp-validation-for="Address"></span>
+                </div>
+                <div class="div-box">
+                    <label asp-for="Phone"></label>
+                    <input asp-for="Phone" />
+                    <span asp-validation-for="Phone"></span>
+                </div>
+                <div class="div-box">
+                    <label asp-for="Premium"></label>
+                    <textarea asp-for="Premium"></textarea>
+                    <span asp-validation-for="Premium"></span>
+                </div>
+                <br />
+
+                <input type="submit" value="Сохранить" />
+                <br />
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+

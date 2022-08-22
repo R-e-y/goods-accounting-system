@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Expense>
+@{
+    Layout = "_Landing";
+    string strTitle = "Затраты";
+    ViewBag.Title = strTitle;
+}
+
+
+
+<div class="inner">
+    @{
+        if (TempData["Message"] != null)
+        {
+            <span style="color:red">@TempData["Message"] </span>
+        }
+        // TempData.Keep("Message");
+    }
+    <br />
+    <a asp-controller="Expense" asp-action="Exp"  style="margin-left:1200px" class="button ">Расcчитать затраты</a>
+    <br />
+
+    <h3>@strTitle</h3>
+
+
+
+    <div class="table-wrapper">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Сумма</th>
+                    <th>Дата</th>
+                    <th>Сотрудник</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Sum)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EmployeeNavigation.Name)</td>
+
+                        <td><a asp-controller="Expense" asp-action="Edit" asp-route-id="@item.IdExp" class="button primary small">Изменить</a></td>
+                        <td>
+                            <form asp-controller="Expense" asp-action="Delete" method="post" asp-route-id="@item.IdExp">
+                                <input type="hidden" asp-for="@item.IdExp">
+                                <input type="submit" value="Удалить" class="button  small" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+        <br />
+
+        <a asp-controller="Expense" asp-action="Edit" asp-route-id="" class="button next scrolly">Добавить затраты</a>
+        <br />
+    </div>
+
+</div>

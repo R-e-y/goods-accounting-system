@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Post>
+@{
+    Layout = "_Landing";
+    string strTitle = "Должности";
+    ViewBag.Title = strTitle;
+}
+
+<div class="inner">
+    @{
+        if (TempData["Message"] != null)
+        {
+            <span style="color:red">@TempData["Message"] </span>
+        }
+        // TempData.Keep("Message");
+    }
+    <br />
+
+    <h3>@strTitle</h3>
+
+    <div class="table-wrapper">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Должность</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+
+                        <td><a asp-controller="Post" asp-action="Edit" asp-route-id="@item.IdPost" class="button primary small">Изменить</a></td>
+                        <td>
+                            <form asp-controller="Manufacture" asp-action="Delete" method="post" asp-route-id="@item.IdPost">
+                                <input type="hidden" asp-for="@item.IdPost">
+                                <input type="submit" value="Удалить" class="button  small" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+
+    <a asp-controller="Post" asp-action="Edit" asp-route-id="" class="button next scrolly">Добавить должность</a>
+    <br />
+
+</div>

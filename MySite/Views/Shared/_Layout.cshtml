@@ -1,0 +1,63 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+    @await Html.PartialAsync("_MetatagsPartial")
+    @await Html.PartialAsync("_CssPartial")
+</head>
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        @*@await Html.PartialAsync("_HeaderPartial")*@
+        @RenderSection("Header", true)
+
+        <!-- Menu -->
+        @await Html.PartialAsync("_MenuPartial")
+
+        <!-- Banner -->
+        <section id="banner" class="major">
+            <div class="inner">
+
+                <header class="major">
+                    <h1>Chocolate Kingdom</h1>
+                </header>
+                <div class="content">
+                    <p>
+                        Все виды шоколадных изделий, приготовленные по технологии швейцарских кондитеров
+                    </p>
+                    <ul class="actions">
+
+                        <li><a href="#one" class="button next scrolly">Start</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Main -->
+        <div id="main">
+
+            <!-- One -->
+            @*@await Html.PartialAsync("_TilePartial")*@
+            @RenderBody()
+            
+
+        </div>
+
+        <!-- Contact -->
+        <!--@await Html.PartialAsync("_ContactPartial")-->
+
+    </div>
+
+        <!-- Footer -->
+    <!--@await Html.PartialAsync("_FooterPartial")-->
+
+    <!-- Scripts -->
+    @await Html.PartialAsync("_ScriptsPartial")
+
+</body>
+</html>

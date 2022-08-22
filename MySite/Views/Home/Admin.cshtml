@@ -1,0 +1,116 @@
+﻿@{
+    Layout = "_Layout";
+
+}
+
+@section Header{
+    <!-- Header -->
+    <header id="header" class="alt">
+        <a  class="logo"><strong>Администратор</strong> <span> <em>@User.Identity.Name </em></span></a>
+
+
+        <nav>
+            <a class="button small" asp-action="Logout" asp-controller="Account">Log out</a>
+            <a href="#menu">Меню</a>
+        </nav>
+    </header>
+}
+
+<section id="one" class="tiles">
+    <article>
+        <span class="image">
+            <img src="~/images/pic01.jpg" alt="" />
+        </span>
+        <header class="major">
+            <h3><a asp-controller="Employee" asp-action="EList">Сотрудники</a></h3>
+            @*<p>Ipsum dolor sit amet</p>*@
+        </header>
+    </article>
+    <article>
+        <span class="image">
+            <img src="~/images/pic02.jpg" alt="" />
+        </span>
+        <header class="major">
+            <h3><a asp-controller="ProdSale" asp-action="PSList">Продажи</a></h3>
+            @*<p>feugiat amet tempus</p>*@
+        </header>
+    </article>
+    <article>
+        <span class="image">
+            <img src="~/images/pic03.jpg" alt="" />
+        </span>
+        <header class="major">
+            <h3><a asp-controller="Manufacture" asp-action="MList">Производство</a></h3>
+            @*<p>Lorem etiam nullam</p>*@
+        </header>
+    </article>
+    <article>
+        <span class="image">
+            <img src="~/images/pic04.jpg" alt="" />
+        </span>
+        <header class="major">
+            <h3><a asp-controller="FinishedProd" asp-action="FPList">Продукция</a></h3>
+            @*<p>Nisl sed aliquam</p>*@
+        </header>
+    </article>
+    <article>
+        <span class="image">
+            <img src="~/images/pic06.jpg" alt="" />
+        </span>
+        <header class="major">
+            <h3><a asp-controller="Raw" asp-action="RList">Сырье</a></h3>
+            @*<p>Feugiat amet tempus</p>*@
+        </header>
+    </article>
+    <article>
+        <span class="image">
+            <img src="~/images/pic05.jpg" alt="" />
+        </span>
+        <header class="major">
+            <h3><a asp-controller="RawPurchase" asp-action="RPList">Закупка сырья</a></h3>
+            @*<p>Ipsum dolor sit amet</p>*@
+        </header>
+    </article>
+    <article>
+        <span class="image">
+            <img src="~/images/pic06.jpg" alt="" />
+        </span>
+        <header class="major">
+            <h3><a asp-controller="Ingridient" asp-action="IList">Ингридиенты</a></h3>
+            @*<p>Feugiat amet tempus</p>*@
+        </header>
+    </article>
+    <article>
+        <span class="image">
+            <img src="~/images/pic06.jpg" alt="" />
+        </span>
+        <header class="major">
+            <h3><a asp-controller="Post" asp-action="PList">Должности</a></h3>
+            @*<p>Feugiat amet tempus</p>*@
+        </header>
+    </article>
+    <article>
+        <span class="image">
+            <img src="~/images/pic06.jpg" alt="" />
+        </span>
+        <header class="major">
+            <h3><a asp-controller="Budget" asp-action="BudgetList">Бюджет</a></h3>
+            @*<p>Feugiat amet tempus</p>*@
+        </header>
+    </article>
+
+    <article>
+        <span class="image">
+            <img src="~/images/pic06.jpg" alt="" />
+        </span>
+        <header class="major">
+            <h3><a asp-controller="Expense" asp-action="Index">Затраты</a></h3>
+            @*<p>Feugiat amet tempus</p>*@
+        </header>
+    </article>
+</section>
+
+
+<div>
+    <sub>project by Zhanna Artyshova ПИ-2-18</sub>
+</div>

@@ -1,0 +1,73 @@
+﻿@model FinishedProd
+@{
+    Layout = "_Landing";
+    string strTitle = "Продукция";
+    ViewBag.Title = strTitle;
+}
+
+
+<div class="inner">
+
+    @{
+        if (TempData["Message"] != null)
+        {
+            <span style="color:red">@TempData["Message"] </span>
+        }
+        // TempData.Keep("Message");
+    }
+    <br />
+
+    <div>
+        <h2>@strTitle</h2>
+        <div>
+            <form asp-controller="FinishedProd" asp-action="Edit" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="IdProd" />
+
+                <div asp-validation-summary="All"></div>
+                <div class="div-box">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" />
+                    <span asp-validation-for="Name"></span>
+                </div>
+
+
+                <!-- ViewBag -->
+                <div class="div-box">
+                    <label asp-for="Unit"></label>
+                    <select asp-for="Unit" class="form-control" asp-items="ViewBag.Unit">Name</select>
+                    <span asp-validation-for="Unit"></span>
+                </div>
+                <div class="div-box">
+                    <label asp-for="Price"></label>
+                    <input asp-for="Price" />
+                    <span asp-validation-for="Price"></span>
+                </div>
+                <div class="div-box">
+                    <label asp-for="Amount"></label>
+                    <textarea asp-for="Amount"></textarea>
+                    <span asp-validation-for="Amount"></span>
+                </div>
+                <div class="div-box">
+                    <label asp-for="Markup"></label>
+                    <textarea asp-for="Markup"></textarea>
+                    <span asp-validation-for="Markup"></span>
+                </div>
+                <br />
+
+                <div>
+                    <input type="submit" value="Сохранить" />
+                </div>
+                <br />
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+

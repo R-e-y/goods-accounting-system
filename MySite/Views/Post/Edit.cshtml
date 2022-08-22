@@ -1,0 +1,49 @@
+﻿@model Post
+@{
+    Layout = "_Landing";
+    string strTitle = "Должности";
+    ViewBag.Title = strTitle;
+}
+
+
+<div class="inner">
+
+    @{
+        if (TempData["Message"] != null)
+        {
+            <span style="color:red">@TempData["Message"] </span>
+        }
+        // TempData.Keep("Message");
+    }
+    <br />
+
+    <div>
+        <h2>@strTitle</h2>
+        <div>
+            <form asp-controller="Post" asp-action="Edit" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="IdPost" />
+
+                <div asp-validation-summary="All"></div>
+                <div class="div-box">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" />
+                    <span asp-validation-for="Name"></span>
+                </div>
+
+                <br />
+
+                <input type="submit" value="Сохранить" />
+                <br />
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+

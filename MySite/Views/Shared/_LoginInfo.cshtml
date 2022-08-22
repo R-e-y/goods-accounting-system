@@ -1,0 +1,84 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+    @await Html.PartialAsync("_MetatagsPartial")
+    @await Html.PartialAsync("_CssPartial")
+</head>
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header" class="alt">
+            <a  class="logo"><strong></strong> <span></span></a>
+
+
+            <nav>
+                  <a asp-controller="Account" asp-action="Login" class="button primary small">Log in</a>
+                @*<a href="#menu">Меню</a>*@
+            </nav>
+        </header>
+
+        <!-- Menu -->
+        <!--@await Html.PartialAsync("_MenuPartial")-->
+
+        <!-- Banner -->
+        <section id="banner" class="major">
+            <div class="inner">
+
+                <header class="major">
+                    <h1>Chocolate Kingdom</h1>
+                </header>
+                <div class="content">
+                    <p>
+                        Все виды шоколадных изделий, приготовленные по технологии швейцарских кондитеров
+                    </p>
+                    <ul class="actions">
+
+                        <li><a asp-controller="Account" asp-action="Signup" class="button next scrolly">Register</a></li>
+                    </ul>
+                </div>
+                @RenderBody()
+            </div>
+
+        </section>
+
+        <!-- Main -->
+        <div id="main">
+
+            <!-- One -->
+            @*@await Html.PartialAsync("_TilePartial")*@
+
+            <!-- Two -->
+            @*<section id="two">
+
+
+
+                    <div class="inner">
+                        <header class="major">
+                            <h2>Massa libero</h2>
+                        </header>
+                        <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
+                        <ul class="actions">
+                            <li><a href="landing.html" class="button next">Get Started</a></li>
+                        </ul>
+                    </div>
+                </section>*@
+
+        </div>
+
+        <!-- Contact -->
+        <!--await Html.PartialAsync("_ContactPartial")-->
+
+    </div>
+
+    <!-- Footer -->
+    <!--await Html.PartialAsync("_FooterPartial")-->
+
+    <!-- Scripts -->
+    @await Html.PartialAsync("_ScriptsPartial")
+
+</body>
+</html>

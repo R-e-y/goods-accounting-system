@@ -1,0 +1,105 @@
+﻿@model MySite.Domain.Entities.SignUpUser
+
+@{
+    Layout = "_Generic";
+
+}
+
+@section Header{
+    <!-- Header -->
+    <header id="header">
+        <a class="logo"><strong> </strong> <span>Регистрация</span></a>
+        @*<nav>
+                <a href="#menu">Menu</a>
+            </nav>*@
+    </header>
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @await Html.PartialAsync("_MetatagsPartial")
+    @await Html.PartialAsync("_CssPartial")
+</head>
+<body>
+
+
+    <div class="inner">
+
+        @*<h3>Регистрация</h3>
+        <hr />*@
+        <div class="row">
+            <div class="col-md-6">
+                <form asp-action="Signup">
+                    <div asp-validation-summary="ModelOnly" class="text-danger" style="color:red"></div>
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label"></label>
+                        <input asp-for="FirstName" class="form-control" />
+
+                        <span asp-validation-for="FirstName" class="text-danger" style="color:red"></span>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label"></label>
+                        <input asp-for="LastName" class="form-control" />
+
+                        <span asp-validation-for="LastName" class="text-danger" style="color:red"></span>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+
+                        <span asp-validation-for="Email" class="text-danger" style="color:red"></span>
+                        <br>
+                    </div>
+                    @*<div class="form-group">
+                        <label asp-for="Post" class="control-label"></label>
+                    
+                    <select name="Post" id="">
+                        <option value="">- выберите должность -</option>
+                        <option value="Manager">Менеджер</option>
+                        <option value="Technologist">Технолог</option>
+                        <option value="Accountant">Бухгалтер</option>
+                        <option value="Director">Директор</option>
+
+                    </select>
+                                    <span asp-validation-for="Post" class="text-danger" style="color:red"></span>
+                                </div>*@
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger" style="color:red"></span>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmPassword" class="control-label"></label>
+                        <input asp-for="ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger" style="color:red"></span>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        @*<a asp-action="Index" asp-controller="Home"></a>*@
+                    </div>
+                </form>
+            </div>
+            <div class=" col-md-8">
+                <img src="~/images/signup-removebg-preview1.png" class="img-fluid" />
+            </div>
+
+        </div>
+
+        <div>
+            <p>Click <a asp-action="Login" asp-controller="Account">here</a> to log in</p>
+        </div>
+    </div>
+
+
+    <!-- Scripts -->
+    @await Html.PartialAsync("_ScriptsPartial")
+
+</body>
+</html>
